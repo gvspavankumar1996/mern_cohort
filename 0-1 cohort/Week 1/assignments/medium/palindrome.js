@@ -4,29 +4,7 @@
 */
 
 function isPalindrome(str) {
-  let start = 0;
-  let end = str.length-1;
-
-// remove all spaces
-  str = str.replace(/\s/g, ""); //used regex
-
-// remove all punctuation marks
-  str = str.replace(/[^\w\s]/gi, "");
-  
-  while(end>=start){
-    if(str[start].toLowerCase()==str[end].toLowerCase()){
-      start++;
-      end--;
-    }
-    else{
-      return false;
-    }
-  }
   return true;
 }
 
-console.log(isPalindrome('leveL'));
-console.log(isPalindrome('level'));
-console.log(isPalindrome('mole'));
-console.log(isPalindrome('a'));
-//module.exports = isPalindrome;
+module.exports = isPalindrome;

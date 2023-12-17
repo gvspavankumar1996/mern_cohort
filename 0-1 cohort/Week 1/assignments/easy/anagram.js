@@ -5,38 +5,37 @@
 */
 
 function isAnagram(str1, str2) {
-
-  // first check - to check anagram we need to check if both strings have same length if not then return false
-  if (str1.length !== str2.length) {
-    return false;
+  if(str1.length != str2.length){
+    return false
   }
+  const str1Values={}
+  for(let i=0; i<str1.length;i++){
+    const letter=str1[i].toLowerCase()
+    if(str1Values[letter]){
+      str1Values[letter]=str1Values[letter]+1;
 
-   // convert both strings to lowercase
-  str1 = str1.toLowerCase();
-  str2 = str2.toLowerCase();
-
-   // split the strings, sort them and store them in form of arr1 and arr2
-  let arr1 = str1.split("").sort()
-  let arr2 = str2.split("").sort();
-
-  //console.log(arr1);
-  //console.log(arr2);
-
-  // function checks if both arrays have same elements at each index position or not
-  function check(arr1, arr2){
-    for(let i=0; i<arr1.length; i++){
-      if(arr1[i] !== arr2[i]){
-        return false;
-      }
     }
-    return true;
+    else{
+      str1Values[letter]=1;
+    }
   }
 
-  let ans = check(arr1, arr2);
-      return ans;
+  console.log(str1Values,"strValues")
+  for(let i=0; i<str2.length;i++){
+    // console.log(str1Values[str2[i]].toLowerCase())
+    const letter=str2[i].toLowerCase()
+    if(str1Values[letter]){
+      str1Values[letter]=str1Values[letter]-1;
+    }
+    else{
+      return false;
+    }
+    
+  }
+  console.log(str1Values,"ending")
+return true;
+
 }
+isAnagram("openai","openaa")
 
-console.log(isAnagram("ram", "mar"));
-console.log(isAnagram("ram", "mau"));
-
-//module.exports = isAnagram;
+module.exports = isAnagram;
